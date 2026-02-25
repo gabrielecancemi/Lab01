@@ -6,11 +6,7 @@ class Domanda:
         self.testo = testo
         self.livello = livello
         self.corretta = corretta
-        self.dom = []
-        self.dom.append(corretta)
-        self.dom.append(sbagliata0)
-        self.dom.append(sbagliata1)
-        self.dom.append(sbagliata2)
+        self.dom = [corretta, sbagliata0, sbagliata1, sbagliata2]
 
 class Player:
     def __init__(self, nickname: str, punteggio: int):
@@ -19,9 +15,11 @@ class Player:
 
 
 class Game:
-    domande = []
-    utenti = []
-    liv_max = 0
+
+    def __init__(self):
+        self.domande = []
+        self.utenti = []
+        self.liv_max = 0
 
     # @staticmethod @classmethod
     def leggi_domande(self):
@@ -55,8 +53,8 @@ class Game:
                 dom_liv.append(d)
         return dom_liv
 
-
-    def stampa_domanda(self, domanda):
+    @staticmethod
+    def stampa_domanda(domanda):
         print(f"Livello: {domanda.livello}) {domanda.testo}")
         random.shuffle(domanda.dom)
         i=1
